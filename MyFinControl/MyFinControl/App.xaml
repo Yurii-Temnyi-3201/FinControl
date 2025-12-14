@@ -1,0 +1,11 @@
+﻿<Application x:Class="MyFinControl.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MyFinControl"
+             Startup="Application_Startup"
+             ShutdownMode="OnMainWindowClose">
+
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>

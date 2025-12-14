@@ -1,0 +1,184 @@
+﻿<Window x:Class="MyFinControl.EditOperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Операція"
+        MinHeight="360"
+        Width="380"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="Height"
+        ResizeMode="NoResize"
+        Background="#FFF3F4F6">
+
+    <Grid Margin="10,0,10,10">
+        <Border CornerRadius="12"
+            Background="White"
+            BorderBrush="#E5E7EB"
+            BorderThickness="1"
+            Padding="12">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!-- Заголовок -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Контент (поля) -->
+                    <RowDefinition Height="*"/>
+                    <!-- Кнопки -->
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Основні поля -->
+                <StackPanel Grid.Row="1">
+
+                    <!-- Категорія -->
+                    <StackPanel Margin="0,0,0,8">
+                        <TextBlock Text="Категорія:"
+                               FontFamily="Segoe UI"
+                               FontSize="12"
+                               Foreground="#4B5563"
+                               Margin="0,0,0,4"/>
+                        <ComboBox x:Name="CategoryComboBox"
+                              FontFamily="Segoe UI"
+                              FontSize="13"
+                              Height="28"
+                              BorderBrush="#D1D5DB"
+                              BorderThickness="1"
+                              DisplayMemberPath="Name"
+                              SelectionChanged="CategoryComboBox_SelectionChanged"/>
+                    </StackPanel>
+
+                    <!-- Тип операції -->
+                    <StackPanel Margin="0,0,0,12">
+                        <TextBlock Text="Тип операції"
+                               FontSize="12"
+                               Foreground="#6B7280"
+                               Margin="0,0,0,4"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <RadioButton x:Name="ExpenseRadio"
+                                     Content="Витрата"
+                                     Margin="0,0,16,0"/>
+                            <RadioButton x:Name="IncomeRadio"
+                                     Content="Дохід"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Опис -->
+                    <StackPanel Margin="0,0,0,12">
+                        <TextBlock Text="Опис:"
+                               FontFamily="Segoe UI"
+                               FontSize="12"
+                               Foreground="#4B5563"
+                               Margin="0,0,0,4"/>
+                        <TextBox x:Name="DescriptionTextBox"
+                             FontFamily="Segoe UI"
+                             FontSize="13"
+                             Height="28"
+                             Padding="6,2"
+                             BorderBrush="#D1D5DB"
+                             BorderThickness="1"/>
+                    </StackPanel>
+
+                    <!-- Сума -->
+                    <StackPanel Margin="0,0,0,12">
+                        <TextBlock Text="Сума:"
+                               FontFamily="Segoe UI"
+                               FontSize="12"
+                               Foreground="#4B5563"
+                               Margin="0,0,0,4"/>
+                        <TextBox x:Name="AmountTextBox"
+                             FontFamily="Segoe UI"
+                             FontSize="13"
+                             Height="28"
+                             Padding="6,2"
+                             BorderBrush="#D1D5DB"
+                             BorderThickness="1"/>
+                    </StackPanel>
+
+                    <!-- Валюта -->
+                    <StackPanel>
+                        <TextBlock Text="Валюта:"
+                               FontFamily="Segoe UI"
+                               FontSize="12"
+                               Foreground="#4B5563"
+                               Margin="0,0,0,4"/>
+                        <ComboBox x:Name="CurrencyComboBox"
+                              FontFamily="Segoe UI"
+                              FontSize="13"
+                              Height="28"
+                              Width="120"
+                              BorderBrush="#D1D5DB"
+                              BorderThickness="1"
+                              HorizontalAlignment="Left">
+                            <ComboBoxItem Content="UAH" IsSelected="True"/>
+                            <ComboBoxItem Content="USD"/>
+                            <ComboBoxItem Content="EUR"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Додатковий блок для операцій "Накопичення" -->
+                    <!-- Панель для операцій типу Накопичення -->
+                    <StackPanel x:Name="SavingsPanel"
+            Margin="0,10,0,0"
+            Visibility="Collapsed">
+
+                        <Border Background="#F9FAFB"
+            CornerRadius="8"
+            Padding="8"
+            BorderBrush="#E5E7EB"
+            BorderThickness="1">
+                            <StackPanel>
+
+                                <TextBlock Text="Накопичення"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#111827"
+                       Margin="0,0,0,8"/>
+
+                                <!-- Введення цілі -->
+                                <TextBlock Text="Бажана сума (ціль):"
+                       FontSize="12"
+                       Foreground="#4B5563"/>
+                                <TextBox x:Name="GoalTextBox"
+                     Height="28"
+                     Margin="0,4,0,12"
+                     BorderBrush="#D1D5DB"
+                     BorderThickness="1"
+                     FontSize="13"/>
+
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,12,0,0">
+                    <Button Content="OK"
+                        Height="30"
+                        MinWidth="100"
+                        Padding="10,2"
+                        Margin="0,0,8,0"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        Background="#2563EB"
+                        Foreground="White"
+                        BorderBrush="#2563EB"
+                        BorderThickness="1"
+                        IsCancel="True"
+                        Click="Ok_Click"/>
+                    <Button Content="Скасувати"
+                        Height="30"
+                        MinWidth="100"
+                        Padding="10,2"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        IsDefault="True"
+                        Click="Cancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+
+</Window>

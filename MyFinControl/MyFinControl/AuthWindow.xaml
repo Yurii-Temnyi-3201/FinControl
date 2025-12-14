@@ -1,0 +1,256 @@
+﻿<Window x:Class="MyFinControl.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title=""
+        Height="420"
+        Width="460"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#FFF3F4F6">
+
+    <Grid Margin="15,0,15,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0"
+                    Margin="0,0,0,05">
+            <TextBlock Text="Особисті фінанси"
+                       FontFamily="Segoe UI"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="#111827"/>
+            
+        </StackPanel>
+
+        <!-- Вміст -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <!-- Картки з висотою по вмісту -->
+                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Блок реєстрації -->
+            <Border Grid.Row="0"
+        x:Name="RegistrationPanel"
+        CornerRadius="12"
+        Background="White"
+        BorderBrush="#E5E7EB"
+        BorderThickness="1"
+        Padding="10"
+        Visibility="Collapsed">
+        
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <!-- верх: контент -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- низ: кнопка -->
+                    </Grid.RowDefinitions>
+
+                    <!-- ВЕРХНЯ ЧАСТИНА: усі поля -->
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Крок 1. Реєстрація"
+                       FontFamily="Segoe UI"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#111827"
+                       Margin="0,0,0,8"/>
+
+                        <TextBlock Text="Придумайте пароль для доступу до системи:"
+                       FontFamily="Segoe UI"
+                       FontSize="12"
+                       Foreground="#4B5563"
+                       Margin="0,0,0,4"/>
+
+                        <PasswordBox x:Name="RegPasswordBox"
+                         Height="28"
+                         Padding="6,2"
+                         BorderBrush="#D1D5DB"
+                         BorderThickness="1"
+                         Margin="0,0,0,8"/>
+
+                        <TextBlock Text="Повторіть пароль:"
+                       FontFamily="Segoe UI"
+                       FontSize="12"
+                       Foreground="#4B5563"
+                       Margin="0,4,0,4"/>
+
+                        <PasswordBox x:Name="RegConfirmPasswordBox"
+                         Height="28"
+                         Padding="6,2"
+                         BorderBrush="#D1D5DB"
+                         BorderThickness="1"
+                         Margin="0,0,0,8"/>
+
+                        <TextBlock Text="Початковий баланс:"
+                       FontFamily="Segoe UI"
+                       FontSize="12"
+                       Foreground="#4B5563"
+                       Margin="0,8,0,4"/>
+
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- UAH -->
+                            <StackPanel Grid.Column="0"
+                            Margin="0,0,4,0">
+                                <TextBlock Text="UAH"
+                               FontFamily="Segoe UI"
+                               FontSize="11"
+                               Foreground="#6B7280"/>
+                                <TextBox x:Name="RegBalanceUAHTextBox"
+                             Text=" "
+                             Height="28"
+                             Padding="6,2"
+                             BorderBrush="#D1D5DB"
+                             BorderThickness="1"
+                             Margin="0,2,0,0"/>
+                            </StackPanel>
+
+                            <!-- USD -->
+                            <StackPanel Grid.Column="1"
+                            Margin="4,0,4,0">
+                                <TextBlock Text="USD"
+                               FontFamily="Segoe UI"
+                               FontSize="11"
+                               Foreground="#6B7280"/>
+                                <TextBox x:Name="RegBalanceUSDTextBox"
+                             Text=" "
+                             Height="28"
+                             Padding="6,2"
+                             BorderBrush="#D1D5DB"
+                             BorderThickness="1"
+                             Margin="0,2,0,0"/>
+                            </StackPanel>
+
+                            <!-- EUR -->
+                            <StackPanel Grid.Column="2"
+                            Margin="4,0,0,0">
+                                <TextBlock Text="EUR"
+                               FontFamily="Segoe UI"
+                               FontSize="11"
+                               Foreground="#6B7280"/>
+                                <TextBox x:Name="RegBalanceEURTextBox"
+                             Text=" "
+                             Height="28"
+                             Padding="6,2"
+                             BorderBrush="#D1D5DB"
+                             BorderThickness="1"
+                             Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock x:Name="RegErrorText"
+                       FontFamily="Segoe UI"
+                       FontSize="11"
+                       Foreground="#B91C1C"
+                       Margin="0,0,0,8"
+                       TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- НИЖНЯ ЧАСТИНА: кнопка, притиснута до низу блоку -->
+                    <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,8,0,0">
+                        <Button Content="Продовжити до входу"
+                    Height="30"
+                    MinWidth="150"
+                    Padding="16,4"
+                    Background="#2563EB"
+                    Foreground="White"
+                    BorderBrush="#2563EB"
+                    BorderThickness="1"
+                    Click="RegisterButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+
+            <!-- Блок входу -->
+            <!-- Блок входу -->
+            <Border Grid.Row="0"
+        x:Name="LoginPanel"
+        CornerRadius="12"
+        Background="White"
+        BorderBrush="#E5E7EB"
+        BorderThickness="1"
+        Padding="12"
+        Visibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!-- Заголовок -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Поле пароля + підпис -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Місце під помилку -->
+                        <RowDefinition Height="auto"/>
+                        <!-- Кнопка -->
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Заголовок блоку -->
+                    <TextBlock Grid.Row="0"
+                   Text="Крок 2. Вхід до системи"
+                   FontFamily="Segoe UI"
+                   FontSize="14"
+                   FontWeight="SemiBold"
+                   Foreground="#111827"
+                   Margin="0,0,0,10"/>
+
+                    <!-- Підпис + поле пароля -->
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Введіть пароль для входу:"
+                       FontFamily="Segoe UI"
+                       FontSize="12"
+                       Foreground="#4B5563"
+                       Margin="0,0,0,4"/>
+
+                        <PasswordBox x:Name="LoginPasswordBox"
+                         Height="28"
+                         Padding="6,2"
+                         BorderBrush="#D1D5DB"
+                         BorderThickness="1"
+                         Margin="0,0,0,8"/>
+                    </StackPanel>
+
+                    <!-- Повідомлення про помилку -->
+                    <TextBlock x:Name="LoginErrorText"
+                   Grid.Row="2"
+                   FontFamily="Segoe UI"
+                   FontSize="11"
+                   Foreground="#B91C1C"
+                   Margin="0,0,0,4"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"/>
+
+                    <!-- Кнопка входу -->
+                    <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,0,0">
+                        <Button Content="Увійти"
+                    Height="30"
+                    MinWidth="110"
+                    Padding="3"
+                    Background="#16A34A"
+                    Foreground="White"
+                    BorderBrush="#16A34A"
+                    BorderThickness="1"
+                    Click="LoginButton_Click" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>
